@@ -1,0 +1,169 @@
+import { useContext } from 'react';
+import { AuthContext } from "../../Context/AuthContext";
+import Book from "../../Components/Book";
+import { Conteiner, SubInfo, AreaImg, Info, AreaDesc, LogoImg, BtnDonw, AreaBooks } from "./styles";
+import { BsBookFill, BsCalendar, BsBookHalf, BsGlobe, BsFillPencilFill, BsFillHeartFill, BsTextParagraph } from "react-icons/bs";
+
+const data = [
+    {
+        id: 1,
+        title: "Duna",
+        case: "https://imagens.elivros.love/Frank-Herbert/Baixar-Livro-Duna-Duna-Vol-1-Frank-Herbert-Em-Epub-Pdf-Mobi-Ou-Ler-Online_large.jpg",
+        pdfUrl: "",
+        like: 42,
+        description: "O que aconteceria se você tivesse apenas um ano para salvar tudo o que ama? Anos após o desfecho do filme Valente, a princesa Merida de DunBroch precisa de uma mudança. Por mais que ame sua família — o brincalhão rei Fergus, a respeitável rainha Elinor e os travessos trigêmeos — e seu reino pacífico, ela está farta da letargia. Todos os dias são sempre iguais. Merida anseia por aventuras, propósitos, desafios e, quem sabe um dia, até amor. Mas a impetuosa princesa jamais imaginaria que sua inquietação traria à tona a presença de Feradach, um ser misterioso e sobrenatural encarregado de extirpar tudo o que há de podre e estagnado. O deus aparece em DunBroch na véspera de Natal, determinado a demolir o reino — e todos que lá vivem. Apenas a intervenção de Cailleach, uma antiga deusa da criação, dá a Merida uma pitada de esperança: ela poderá convencer a família a mudar dentro de um ano — ou terá de arcar com consequências perpétuas. Sob o olhar atento dos deuses, Merida lidera uma série de jornadas épicas a reinos vizinhos e distantes em uma tentativa de incitar a mudança no âmbito familiar. No entanto, em sua ânsia de salvar todos aqueles que ama da ruína, Merida talvez tenha deixado de lado o membro mais estagnado do clã DunBroch — ela mesma",
+        pages: 89,
+        publishingCompany: "Gambiarra",
+        sentByName: "Sando Calvacante de souza",
+        category: "Ação",
+        language: "Portugues",
+        year: 2003,
+        islike: false
+    },
+    {
+        id: 2,
+        title: "O Enigma dos Dados",
+        case: "https://imagens.elivros.love/Marcos-Mota/baixar-livro-enigma-dos-dados-objetos-de-poder-vol-1-marcos-mota-em-epub-pdf-mobi-ou-ler-online_large.webp",
+        pdfUrl: "",
+        like: 76,
+        description: "O que aconteceria se você tivesse apenas um ano para salvar tudo o que ama? Anos após o desfecho do filme Valente, a princesa Merida de DunBroch precisa de uma mudança. Por mais que ame sua família — o brincalhão rei Fergus, a respeitável rainha Elinor e os travessos trigêmeos — e seu reino pacífico, ela está farta da letargia. Todos os dias são sempre iguais. Merida anseia por aventuras, propósitos, desafios e, quem sabe um dia, até amor. Mas a impetuosa princesa jamais imaginaria que sua inquietação traria à tona a presença de Feradach, um ser misterioso e sobrenatural encarregado de extirpar tudo o que há de podre e estagnado. O deus aparece em DunBroch na véspera de Natal, determinado a demolir o reino — e todos que lá vivem. Apenas a intervenção de Cailleach, uma antiga deusa da criação, dá a Merida uma pitada de esperança: ela poderá convencer a família a mudar dentro de um ano — ou terá de arcar com consequências perpétuas. Sob o olhar atento dos deuses, Merida lidera uma série de jornadas épicas a reinos vizinhos e distantes em uma tentativa de incitar a mudança no âmbito familiar. No entanto, em sua ânsia de salvar todos aqueles que ama da ruína, Merida talvez tenha deixado de lado o membro mais estagnado do clã DunBroch — ela mesma",
+        pages: 899,
+        publishingCompany: "Sonarata",
+        sentByName: "Donato Damaceno",
+        category: "Terror",
+        language: "Ingles",
+        year: 2000,
+        islike: true
+    },
+    {
+        id: 3,
+        title: "O Avesso da Pele",
+        case: "https://imagens.elivros.love/Frank-Herbert/Baixar-Livro-Duna-Duna-Vol-1-Frank-Herbert-Em-Epub-Pdf-Mobi-Ou-Ler-Online_large.jpg",
+        pdfUrl: "",
+        like: 72,
+        description: "O que aconteceria se você tivesse apenas um ano para salvar tudo o que ama? Anos após o desfecho do filme Valente, a princesa Merida de DunBroch precisa de uma mudança. Por mais que ame sua família — o brincalhão rei Fergus, a respeitável rainha Elinor e os travessos trigêmeos — e seu reino pacífico, ela está farta da letargia. Todos os dias são sempre iguais. Merida anseia por aventuras, propósitos, desafios e, quem sabe um dia, até amor. Mas a impetuosa princesa jamais imaginaria que sua inquietação traria à tona a presença de Feradach, um ser misterioso e sobrenatural encarregado de extirpar tudo o que há de podre e estagnado. O deus aparece em DunBroch na véspera de Natal, determinado a demolir o reino — e todos que lá vivem. Apenas a intervenção de Cailleach, uma antiga deusa da criação, dá a Merida uma pitada de esperança: ela poderá convencer a família a mudar dentro de um ano — ou terá de arcar com consequências perpétuas. Sob o olhar atento dos deuses, Merida lidera uma série de jornadas épicas a reinos vizinhos e distantes em uma tentativa de incitar a mudança no âmbito familiar. No entanto, em sua ânsia de salvar todos aqueles que ama da ruína, Merida talvez tenha deixado de lado o membro mais estagnado do clã DunBroch — ela mesma",
+        pages: 54,
+        publishingCompany: "Gimbilam",
+        sentByName: "Mirtes Nascimento",
+        category: "Politica",
+        language: "Portugues",
+        year: 2001,
+        islike: true
+    },
+    {
+        id: 4,
+        title: "Vamos Pensar mais um Pouco",
+        case: "https://imagens.elivros.love/Mauricio-de-Sousa/baixar-livro-vamos-pensar-mais-um-pouco-mauricio-de-sousa-em-epub-pdf-mobi-ou-ler-online_large.webp",
+        pdfUrl: "",
+        like: 72,
+        description: "O que aconteceria se você tivesse apenas um ano para salvar tudo o que ama? Anos após o desfecho do filme Valente, a princesa Merida de DunBroch precisa de uma mudança. Por mais que ame sua família — o brincalhão rei Fergus, a respeitável rainha Elinor e os travessos trigêmeos — e seu reino pacífico, ela está farta da letargia. Todos os dias são sempre iguais. Merida anseia por aventuras, propósitos, desafios e, quem sabe um dia, até amor. Mas a impetuosa princesa jamais imaginaria que sua inquietação traria à tona a presença de Feradach, um ser misterioso e sobrenatural encarregado de extirpar tudo o que há de podre e estagnado. O deus aparece em DunBroch na véspera de Natal, determinado a demolir o reino — e todos que lá vivem. Apenas a intervenção de Cailleach, uma antiga deusa da criação, dá a Merida uma pitada de esperança: ela poderá convencer a família a mudar dentro de um ano — ou terá de arcar com consequências perpétuas. Sob o olhar atento dos deuses, Merida lidera uma série de jornadas épicas a reinos vizinhos e distantes em uma tentativa de incitar a mudança no âmbito familiar. No entanto, em sua ânsia de salvar todos aqueles que ama da ruína, Merida talvez tenha deixado de lado o membro mais estagnado do clã DunBroch — ela mesma",
+        pages: 66,
+        publishingCompany: "Toarama",
+        sentByName: "Pamelo Santiago da conceição",
+        category: "Terror",
+        language: "Portugues",
+        year: 2021,
+        islike: false
+    },
+    {
+        id: 5,
+        title: "Está Tudo Bem",
+        case: "https://imagens.elivros.love/Cecilia-Rabess/baixar-livro-esta-tudo-bem-cecilia-rabess-em-epub-pdf-mobi-ou-ler-online_large.webp",
+        pdfUrl: "",
+        like: 72,
+        description: "O que aconteceria se você tivesse apenas um ano para salvar tudo o que ama? Anos após o desfecho do filme Valente, a princesa Merida de DunBroch precisa de uma mudança. Por mais que ame sua família — o brincalhão rei Fergus, a respeitável rainha Elinor e os travessos trigêmeos — e seu reino pacífico, ela está farta da letargia. Todos os dias são sempre iguais. Merida anseia por aventuras, propósitos, desafios e, quem sabe um dia, até amor. Mas a impetuosa princesa jamais imaginaria que sua inquietação traria à tona a presença de Feradach, um ser misterioso e sobrenatural encarregado de extirpar tudo o que há de podre e estagnado. O deus aparece em DunBroch na véspera de Natal, determinado a demolir o reino — e todos que lá vivem. Apenas a intervenção de Cailleach, uma antiga deusa da criação, dá a Merida uma pitada de esperança: ela poderá convencer a família a mudar dentro de um ano — ou terá de arcar com consequências perpétuas. Sob o olhar atento dos deuses, Merida lidera uma série de jornadas épicas a reinos vizinhos e distantes em uma tentativa de incitar a mudança no âmbito familiar. No entanto, em sua ânsia de salvar todos aqueles que ama da ruína, Merida talvez tenha deixado de lado o membro mais estagnado do clã DunBroch — ela mesma",
+        pages: 899,
+        publishingCompany: "Tornaria Ramira",
+        sentByName: "Virtor Santos",
+        category: "Infatil",
+        language: "Portugues",
+        year: 2022,
+        islike: false
+    },
+    {
+        id: 6,
+        title: "Star Wars: Esquadrão Vanguarda",
+        case: "https://imagens.elivros.love/Alexander-Freed/baixar-livro-star-wars-esquadrao-vanguarda-alexander-freed-em-epub-pdf-mobi-ou-ler-online_large.webp",
+        pdfUrl: "",
+        like: 72,
+        description: "O que aconteceria se você tivesse apenas um ano para salvar tudo o que ama? Anos após o desfecho do filme Valente, a princesa Merida de DunBroch precisa de uma mudança. Por mais que ame sua família — o brincalhão rei Fergus, a respeitável rainha Elinor e os travessos trigêmeos — e seu reino pacífico, ela está farta da letargia. Todos os dias são sempre iguais. Merida anseia por aventuras, propósitos, desafios e, quem sabe um dia, até amor. Mas a impetuosa princesa jamais imaginaria que sua inquietação traria à tona a presença de Feradach, um ser misterioso e sobrenatural encarregado de extirpar tudo o que há de podre e estagnado. O deus aparece em DunBroch na véspera de Natal, determinado a demolir o reino — e todos que lá vivem. Apenas a intervenção de Cailleach, uma antiga deusa da criação, dá a Merida uma pitada de esperança: ela poderá convencer a família a mudar dentro de um ano — ou terá de arcar com consequências perpétuas. Sob o olhar atento dos deuses, Merida lidera uma série de jornadas épicas a reinos vizinhos e distantes em uma tentativa de incitar a mudança no âmbito familiar. No entanto, em sua ânsia de salvar todos aqueles que ama da ruína, Merida talvez tenha deixado de lado o membro mais estagnado do clã DunBroch — ela mesma",
+        pages: 899,
+        publishingCompany: "Toarama",
+        sentByName: "Carlos Nlinho",
+        category: "Aventura",
+        language: "Portugues",
+        year: 2005,
+        islike: false
+    },
+    {
+        id: 7,
+        title: "Corna",
+        case: "https://imagens.elivros.love/Robert-e-Howard/Baixar-Livro-Conan-Robert-e-Howard-Em-Epub-Pdf-Mobi-Ou-Ler-Online_large.jpg",
+        pdfUrl: "",
+        like: 72,
+        description: "O que aconteceria se você tivesse apenas um ano para salvar tudo o que ama? Anos após o desfecho do filme Valente, a princesa Merida de DunBroch precisa de uma mudança. Por mais que ame sua família — o brincalhão rei Fergus, a respeitável rainha Elinor e os travessos trigêmeos — e seu reino pacífico, ela está farta da letargia. Todos os dias são sempre iguais. Merida anseia por aventuras, propósitos, desafios e, quem sabe um dia, até amor. Mas a impetuosa princesa jamais imaginaria que sua inquietação traria à tona a presença de Feradach, um ser misterioso e sobrenatural encarregado de extirpar tudo o que há de podre e estagnado. O deus aparece em DunBroch na véspera de Natal, determinado a demolir o reino — e todos que lá vivem. Apenas a intervenção de Cailleach, uma antiga deusa da criação, dá a Merida uma pitada de esperança: ela poderá convencer a família a mudar dentro de um ano — ou terá de arcar com consequências perpétuas. Sob o olhar atento dos deuses, Merida lidera uma série de jornadas épicas a reinos vizinhos e distantes em uma tentativa de incitar a mudança no âmbito familiar. No entanto, em sua ânsia de salvar todos aqueles que ama da ruína, Merida talvez tenha deixado de lado o membro mais estagnado do clã DunBroch — ela mesma",
+        pages: 899,
+        publishingCompany: "Toarama",
+        sentByName: "Mirtes Nascimento",
+        category: "Documentario",
+        language: "Portugues",
+        year: 2013,
+        islike: false
+    },
+    {
+        id: 4,
+        title: "Vamos Pensar mais um Pouco",
+        case: "https://imagens.elivros.love/Mauricio-de-Sousa/baixar-livro-vamos-pensar-mais-um-pouco-mauricio-de-sousa-em-epub-pdf-mobi-ou-ler-online_large.webp",
+        pdfUrl: "",
+        like: 72,
+        description: "O que aconteceria se você tivesse apenas um ano para salvar tudo o que ama? Anos após o desfecho do filme Valente, a princesa Merida de DunBroch precisa de uma mudança. Por mais que ame sua família — o brincalhão rei Fergus, a respeitável rainha Elinor e os travessos trigêmeos — e seu reino pacífico, ela está farta da letargia. Todos os dias são sempre iguais. Merida anseia por aventuras, propósitos, desafios e, quem sabe um dia, até amor. Mas a impetuosa princesa jamais imaginaria que sua inquietação traria à tona a presença de Feradach, um ser misterioso e sobrenatural encarregado de extirpar tudo o que há de podre e estagnado. O deus aparece em DunBroch na véspera de Natal, determinado a demolir o reino — e todos que lá vivem. Apenas a intervenção de Cailleach, uma antiga deusa da criação, dá a Merida uma pitada de esperança: ela poderá convencer a família a mudar dentro de um ano — ou terá de arcar com consequências perpétuas. Sob o olhar atento dos deuses, Merida lidera uma série de jornadas épicas a reinos vizinhos e distantes em uma tentativa de incitar a mudança no âmbito familiar. No entanto, em sua ânsia de salvar todos aqueles que ama da ruína, Merida talvez tenha deixado de lado o membro mais estagnado do clã DunBroch — ela mesma",
+        pages: 66,
+        publishingCompany: "Bamem Famili",
+        sentByName: "Daniel Nascimento",
+        category: "Terror",
+        year: 2023,
+        islike: false
+    },
+]
+export default function Visualize() {
+    const { route } = useContext(AuthContext);
+    console.log(data)
+    return (
+        <Conteiner>
+            <AreaImg>
+                <LogoImg src={route.data.case} alt="NovoLivro" />
+                <Info>
+                    <h3>{route.data.title}</h3>
+                    <SubInfo>
+                        <p><BsBookFill color="#276299" /> Paginas: <span>{route.data.pages}</span></p>
+                        <p><BsBookHalf color="#276299" /> Editora: <span>{route.data.publishingCompany}</span></p>
+                        <p><BsFillPencilFill color="#276299" /> Públicado por: <span>{route.data.sentByName}</span></p>
+                        <p><BsGlobe color="#276299" /> Idioma: <span>{route.data.language}</span></p>
+                        <p><BsTextParagraph color="#276299" /> Categoria: <span>{route.data.category}</span></p>
+                        <p><BsFillHeartFill color="#276299" /> Gostou: <span>{route.data.like}</span></p>
+                        <p><BsCalendar color="#276299" /> Ano: <span>{route.data.year}</span></p>
+                    </SubInfo>
+
+                    <BtnDonw onClick={() => alert(route.data.pdfUrl)}>Baixar</BtnDonw>
+                </Info>
+
+            </AreaImg>
+
+            <AreaDesc>
+                <h1>SINOPSE</h1>
+                <p>{route.data.description}</p>
+            </AreaDesc>
+            <AreaBooks>
+                <h1>LIVROS DO MESMO PUBLICANTE</h1>
+                <section>
+                    {data.map((v, i) =>
+                        <Book
+                            key={i}
+                            data={v}
+                        />
+                    )}
+                </section>
+            </AreaBooks>
+        </Conteiner>
+    );
+}
