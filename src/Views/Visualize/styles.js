@@ -16,10 +16,12 @@ export const AreaImg = styled.div`
     justify-content: space-between;
 
 `;
+
 export const LogoImg = styled.img`
     width: 250px;
     height: 320px;
 `;
+
 export const Info = styled.div`
     width: 100%;
     height: 320px;
@@ -30,12 +32,14 @@ export const Info = styled.div`
 
     h3{
         font-size: 14pt;
-
     }
 `;
+
 export const BtnDonw = styled.button`
     width: 200px;
+    height: 35px;
     background-color: #276299;
+    border: none;
 `;
 
 export const SubInfo = styled.div`
@@ -65,10 +69,11 @@ export const AreaDesc = styled.div`
         text-align: start;
     }
 `;
+
 export const AreaBooks = styled.div`
     width: 66vw;
 
-    h1{
+    h3{
         color: #276299;
         text-align: center  ;
         font-size: 10pt;

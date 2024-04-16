@@ -9,7 +9,7 @@ export default function Book(props) {
 
     return (
         <Container onClick={() => setRoute({ route: "visualize", data: props.data })}>
-            <LogoImg src={props.data.case} alt="NovoLivro" />
+            <LogoImg src={props.data.caseUrl} alt="NovoLivro" />
             <AreaInfo>
                 <h1>{props.data.title}</h1>
                 <AreaAction>
@@ -18,7 +18,7 @@ export default function Book(props) {
                         <p>{props.data.like}</p>
                     </Area>
                     <Area pos="right">
-                        <span>{props.data.page}</span>
+                        <span>{props.data.pages}</span>
                         <p>Páginas</p>
                     </Area>
                 </AreaAction>

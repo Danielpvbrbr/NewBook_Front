@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 151px;
-    height:290px;
+    height:270px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -11,22 +11,25 @@ export const Container = styled.div`
     cursor: pointer;
     border-radius:5px;
     box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+    
 `;
 
 
 export const LogoImg = styled.img`
     width: 140px;
     height: 200px;
+    
 `;
 
 export const AreaInfo = styled.div`
     width: 140px;
-    height: 76px;
+    /* height: 77px; */
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
     margin-bottom: 5px;
+
     svg{
         margin-right: 4px;
     }
@@ -36,7 +39,6 @@ export const AreaInfo = styled.div`
         font-size: 12px;
         font-weight: 400;
         text-align: center;
-
     }
 `;
 export const AreaAction = styled.div`
