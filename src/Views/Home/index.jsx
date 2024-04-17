@@ -7,7 +7,7 @@ import { AuthContext } from "../../Context/AuthContext";
 
 export default function Home() {
     const { getAllBooks } = useContext(AuthContext);
-console.log(getAllBooks)
+
     return (
         <Conteiner>
             <Search />

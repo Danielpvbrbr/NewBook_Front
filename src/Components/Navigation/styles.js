@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Conteiner = styled.ul`
-    width: 400px;
+    width: 600px;
     display: flex;
     justify-content: space-evenly;
     list-style: none;
+    //border: 1px solid;
     :hover{
       color: #276299;
    }

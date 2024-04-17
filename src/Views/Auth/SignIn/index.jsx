@@ -1,21 +1,25 @@
+/* eslint-disable no-extra-boolean-cast */
 /* eslint-disable react/prop-types */
 //import { useContext } from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Conteiner, AreaForm, AreaInput, Label, Camp, Button } from "./styles";
+import ErrorAlert from "../../../Components/ErrorAlert";
 
-import Authentication from "../../../Context/Authentication";
-export default function SignIn({ setIsSignIn }) {
+export default function SignIn({ setIsSignIn, SignInAuth, AuthContext }) {
+    const { errorAuth } = useContext(AuthContext);
     const [email, setEmail] = useState("daniel@example.com");
     const [password, SetPassword] = useState("1801");
 
     const HandleSubmit = () => {
-        Authentication({ email, password })
+        SignInAuth({ email, password })
     };
 
     return (
         <Conteiner>
             <h1>Acesso de Usuário</h1>
+
             <AreaForm>
+            <ErrorAlert />
                 <AreaInput>
                     <Label>E-mail:</Label>
                     <Camp
@@ -23,6 +27,7 @@ export default function SignIn({ setIsSignIn }) {
                         placeholder="Digite sei e-mail"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
+                        className={!!errorAuth.email ? "border border-danger" : "border border-primary"}
                     />
 
                     <Label>Senha:</Label>
@@ -31,6 +36,7 @@ export default function SignIn({ setIsSignIn }) {
                         placeholder="Digite sua senha"
                         value={password}
                         onChange={e => SetPassword(e.target.value)}
+                        className={!!errorAuth.password ? "border border-danger" : "border border-primary"}
                     />
                 </AreaInput>
 

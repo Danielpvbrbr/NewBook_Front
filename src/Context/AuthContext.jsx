@@ -1,16 +1,32 @@
+/* eslint-disable no-extra-boolean-cast */
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { API } from "../Services/Connection";
+
 export const AuthContext = createContext({})
 
 export const AuthProvider = ({ children }) => {
-    const [route, setRoute] = useState({ route: "initial", data: {} });
+    const [route, setRoute] = useState({ route: "initial", private: false, data: {} });
+    const [token, setToken] = useState(null);
     const [getAllBooks, setGetAllBooks] = useState([]);
     const [category, setCategory] = useState("");
     const [language, setLanguage] = useState("");
     const [categoryAll, setCategoryAll] = useState([]);
     const [languageAll, setLanguageAll] = useState([]);
+    const [authenticated, setAuthenticated] = useState(null);
+    const [errorAuth, setErrorAuth] = useState([]);
 
+    useEffect(() => {
+        const Token = localStorage.getItem("token");
+        const UserAuth = JSON.parse(localStorage.getItem("userAuth"));
+
+        if (!!Token) {
+            setToken(Token);
+            setAuthenticated(UserAuth);
+        }
+    }, []);
+
+   
 
     useEffect(() => {
         API.get("/book/getAll").then(res => {
@@ -23,7 +39,6 @@ export const AuthProvider = ({ children }) => {
     const getCategory = (id) => {
         API.get(`/category/getById/${id}`).then(res => {
             setCategory(res.data.name);
-            console.log(res.data)
         }).catch(err => {
             console.log(err)
         });
@@ -33,7 +48,6 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         API.get(`/category/getAll`).then(res => {
-            console.log(res.data)
             setCategoryAll(res.data);
         }).catch(err => {
             console.log(err)
@@ -44,7 +58,6 @@ export const AuthProvider = ({ children }) => {
     const getLanguage = (id) => {
         API.get(`/language/getById/${id}`).then(res => {
             setLanguage(res.data.name);
-            console.log(res.data)
         }).catch(err => {
             console.log(err)
         });
@@ -55,7 +68,6 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         API.get(`/language/getAll`).then(res => {
             setLanguageAll(res.data);
-            console.log(res.data)
         }).catch(err => {
             console.log(err)
         });
@@ -63,13 +75,18 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-            route: route,
-            setRoute: setRoute,
-            getAllBooks: getAllBooks,
-            getCategory: getCategory,
-            getLanguage: getLanguage,
-            categoryAll: categoryAll,
-            languageAll: languageAll
+            authenticated,
+            setAuthenticated,
+            token,
+            route,
+            setRoute,
+            errorAuth,
+            setErrorAuth,
+            getAllBooks,
+            getCategory,
+            getLanguage,
+            categoryAll,
+            languageAll,
         }}>
             {children}
         </AuthContext.Provider>
