@@ -20,7 +20,7 @@ export const Conteiner = styled.div`
     }
 `;
 
-export const Area = styled.div`
+export const Area = styled.form`
     width: 65vw;
     display: flex;
     justify-content: center;
@@ -33,33 +33,62 @@ export const AreaBook = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    cursor: pointer;
+    margin-bottom: 10px;
 `;
 export const LogoImg = styled.img`
     width: 156px;
     height: 230px;
+    border: 1px solid #fff;
 `;
 export const AreaCase = styled.div`
     width: 170px;
-    height: 240px;
+    padding: 5px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #276299;
+
 `;
+export const Preview = styled.label`
+    cursor: pointer;
+    width: 156px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    span{
+    color:#fff;
+    font-size: 9pt;
+    }
+`;
+export const SeachPDf = styled.label`
+        width: 98%;
+        height: 30px;
+        background-color:${props => props.bkcolor ? "#e63333" : "#3a7a2d"};
+        border: none;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4px;
+        cursor: pointer;
+        font-size: 14px;
+         color:#fff;
+`;
+
 export const AreaForm = styled.div`
     width: 33.6vw;
-    height: 240px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 12px;
     padding-left: 5px;
     
     input,select{
         color: #747474;
         width: 100%;
-        height: 45px;
+        height: 40px;
         outline: none;
         background-color: #D9D9D9;
         border: none;
@@ -91,7 +120,6 @@ export const AreaAction = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
-
     textarea{
         color: #747474;
         width: 100%;
@@ -100,6 +128,7 @@ export const AreaAction = styled.div`
         background-color: #D9D9D9;
         padding-left: 6px;
         outline: none;
+        resize: none;
     }
 
     button{
@@ -107,6 +136,9 @@ export const AreaAction = styled.div`
         border: none;
         width: 100%;
         height: 40px;
-      
+    }
+    
+    input[type=file]{
+        display: none;
     }
 `;

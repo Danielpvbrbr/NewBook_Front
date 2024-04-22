@@ -6,9 +6,7 @@ export const Conteiner = styled.ul`
     justify-content: space-evenly;
     list-style: none;
     //border: 1px solid;
-    :hover{
-      color: #276299;
-   }
+  
 `;
 
 export const Nav = styled.li`

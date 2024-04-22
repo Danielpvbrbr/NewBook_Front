@@ -18,12 +18,13 @@ export const SearchArea = styled.div`
     border-bottom-left-radius:8px;
 `;
 export const InpSearch = styled.input`
-    width: 52vw;
+    width: 48vw;
     height: 30px;
     color: #000;
-    background-color: #fff;
+     background-color: #ececec;
     border: none;
     outline: none;
+    padding-left: 5px;
 `;
 
 export const SelectCategory = styled.select`
@@ -33,6 +34,7 @@ export const SelectCategory = styled.select`
     background-color: #276299;
     border-top-right-radius: 8px;
     border-bottom-right-radius:8px;
+    padding-left: 3px;
     outline: none;
     border: none;
 `;

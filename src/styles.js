@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
+*{
+  margin: 0;
+  padding: 0;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -9,8 +13,6 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #fff;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

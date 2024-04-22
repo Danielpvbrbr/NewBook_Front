@@ -5,8 +5,8 @@ import { useState, useContext } from "react";
 import { Conteiner, AreaForm, AreaInput, Label, Camp, Button } from "./styles";
 import ErrorAlert from "../../../Components/ErrorAlert";
 
-export default function SignIn({ setIsSignIn, SignInAuth, AuthContext }) {
-    const { errorAuth } = useContext(AuthContext);
+export default function SignIn({ setIsSignIn, SignInAuth, AuthContext, ReactLoading }) {
+    const { errorAuth, loading } = useContext(AuthContext);
     const [email, setEmail] = useState("daniel@example.com");
     const [password, SetPassword] = useState("1801");
 
@@ -14,12 +14,13 @@ export default function SignIn({ setIsSignIn, SignInAuth, AuthContext }) {
         SignInAuth({ email, password })
     };
 
+    
     return (
         <Conteiner>
             <h1>Acesso de Usuário</h1>
 
             <AreaForm>
-            <ErrorAlert />
+                <ErrorAlert />
                 <AreaInput>
                     <Label>E-mail:</Label>
                     <Camp
@@ -40,7 +41,10 @@ export default function SignIn({ setIsSignIn, SignInAuth, AuthContext }) {
                     />
                 </AreaInput>
 
-                <Button bkcolor="#276299" onClick={HandleSubmit}>Acessar</Button>
+                <Button bkcolor="#276299" onClick={HandleSubmit}>
+                    {loading ? <ReactLoading type="spin" color="#fff" height={25} width={25} /> : "Acessar"}
+                </Button>
+
                 <Button bkcolor="#6895BF" onClick={() => setIsSignIn(false)}>Voltar ao Registar</Button>
             </AreaForm>
         </Conteiner>

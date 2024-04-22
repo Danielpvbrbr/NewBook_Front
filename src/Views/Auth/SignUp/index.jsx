@@ -4,8 +4,8 @@ import { useContext, useState } from "react";
 import { Conteiner, AreaForm, AreaInput, Label, Camp, Button } from "./styles";
 import ErrorAlert from "../../../Components/ErrorAlert";
 
-export default function SignUp({ setIsSignIn, SignUpAuth, AuthContext }) {
-    const { errorAuth } = useContext(AuthContext);
+export default function SignUp({ setIsSignIn, SignUpAuth, AuthContext, ReactLoading }) {
+    const { errorAuth, loading } = useContext(AuthContext);
     const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -59,7 +59,9 @@ export default function SignUp({ setIsSignIn, SignUpAuth, AuthContext }) {
                     />
                 </AreaInput>
 
-                <Button bkcolor="#276299" onClick={HandleSubmit}>Registrar</Button>
+                <Button bkcolor="#276299" onClick={HandleSubmit}>
+                    {loading ? <ReactLoading type="spin" color="#fff" height={25} width={25} /> : "Registrar"}
+                </Button>
                 <Button bkcolor="#6895BF" onClick={() => setIsSignIn(true)}>Voltar ao Login</Button>
             </AreaForm>
         </Conteiner>

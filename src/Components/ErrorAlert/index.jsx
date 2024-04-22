@@ -19,10 +19,10 @@ export default function ErrorAlert() {
     }
 
     return (
-        <Container className="bg-danger">
+        <Container >
             {error.map((v, i) =>
                 v.message != null &&
-                <AreaError key={i} >
+                <AreaError key={i} className="bg-danger" >
                     <p className="text-white">{v.message}</p>
                 </AreaError>
             )}

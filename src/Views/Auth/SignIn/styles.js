@@ -44,6 +44,9 @@ export const Camp = styled.input`
 export const Button = styled.button`
     width: 97%;
     height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 5px;
     border: none;
     background-color: ${props => props.bkcolor};

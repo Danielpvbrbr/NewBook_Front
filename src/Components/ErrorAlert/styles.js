@@ -16,9 +16,10 @@ export const AreaError = styled.div`
     justify-content: start;
     align-items: center;
     padding:10px;
+    margin: 1px;
 
     p{
-        font-size: 10pt;
+        font-size: 8pt;
         padding: 0;
         margin: 0;
     }
