@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const Conteiner = styled.div`
     width: 65vw;
-    border: 1px solid red;
 `;
 
 export const AreaBook = styled.div`

@@ -53,9 +53,9 @@ export default function Upload() {
                             {!!casePdf.caseUrl ?
                                 <LogoImg src={casePdf.caseUrl} alt="Capa 156x230" />
                                 :
-                                <span>
+                                <p>
                                     Selecionar Capa 156x230
-                                </span>
+                                </p>
                             }
                         </Preview>
                         <SeachPDf

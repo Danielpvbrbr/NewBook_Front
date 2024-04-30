@@ -14,7 +14,6 @@ export default function SignIn({ setIsSignIn, SignInAuth, AuthContext, ReactLoad
         SignInAuth({ email, password })
     };
 
-    
     return (
         <Conteiner>
             <h1>Acesso de Usuário</h1>

@@ -7,7 +7,7 @@ export const Conteiner = styled.div`
     align-items: center;
     flex-direction: column;
     margin-bottom: 15px;
-    
+    border: 1px solid red;
     h2{
         width: 46vw;
         font-size: 12pt;
@@ -58,9 +58,9 @@ export const Preview = styled.label`
     justify-content: center;
     align-items: center;
  
-    span{
-    color:#fff;
-    font-size: 9pt;
+    p{
+        color: #747474;
+        font-size: 9pt;
     }
 `;
 export const SeachPDf = styled.label`
@@ -75,7 +75,7 @@ export const SeachPDf = styled.label`
         margin: 4px;
         cursor: pointer;
         font-size: 14px;
-         color:#fff;
+        color:#fff;
 `;
 
 export const AreaForm = styled.div`

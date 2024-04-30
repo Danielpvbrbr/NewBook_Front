@@ -1,12 +1,43 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from "../../Context/AuthContext";
 import Book from "../../Components/Book";
-import { Conteiner, SubInfo, AreaImg, Info, AreaDesc, LogoImg, BtnDonw, AreaBooks } from "./styles";
+import { Conteiner, SubInfo, AreaImg, Info, ButtonAction, AreaDesc, LogoImg, BtnDonw, AreaBooks } from "./styles";
 import { BsBookFill, BsCalendar, BsBookHalf, BsGlobe, BsFillPencilFill, BsFillHeartFill, BsTextParagraph } from "react-icons/bs";
 
 
 export default function Visualize() {
-    const { route, getAllBooks, getCategory, getLanguage } = useContext(AuthContext);
+    const {
+        authenticated,
+        route,
+        setRoute,
+        getAllBooks,
+        getCategory,
+        getLanguage,
+        sendFavorite,
+        removeFavorite,
+        favoriteAll,
+
+    } = useContext(AuthContext);
+    const favorite = favoriteAll.filter(el => el.bookId == route.data.id);
+    const [like, setLike] = useState(false || !!favorite.length);
+
+
+    const OnLike = () => {
+        if (!!authenticated) {
+            setLike(!like);
+            if (like) {
+                removeFavorite(favorite[0].id);
+            } else {
+                sendFavorite({
+                    title: route.data.title,
+                    bookId: route.data.id,
+                    userEmail: null
+                });
+            }
+        } else {
+            setRoute({ route: "auth", private: false, data: {} })
+        }
+    };
 
     return (
         <Conteiner>
@@ -24,10 +55,12 @@ export default function Visualize() {
                         <p><BsCalendar color="#276299" /> Ano: <span>{route.data.year}</span></p>
                     </SubInfo>
 
-                    <BtnDonw onClick={() => alert(route.data.pdfUrl)}>Baixar</BtnDonw>
+                    <ButtonAction>
+                        <BtnDonw onClick={() => alert(route.data.pdfUrl)}>Baixar</BtnDonw>
+                        <BsFillHeartFill cursor="pointer" onClick={OnLike} color={like ? "#ff0000" : "#747474"} />
+                    </ButtonAction>
                 </Info>
             </AreaImg>
-
             <AreaDesc>
                 <h1>SINOPSE</h1>
                 <p>{route.data.description}</p>
@@ -36,6 +69,7 @@ export default function Visualize() {
                 <h3>LIVROS DO MESMO PUBLICANTE</h3>
                 <section>
                     {getAllBooks.map((v, i) =>
+                        (route.data.sentByName == v.sentByName) &&
                         <Book
                             key={i}
                             data={v}

@@ -6,13 +6,13 @@ import { AuthContext } from "../../Context/AuthContext";
 
 
 export default function Home() {
-    const { getAllBooks } = useContext(AuthContext);
+    const { bookFilter } = useContext(AuthContext);
 
     return (
         <Conteiner>
             <Search />
             <AreaBook>
-                {getAllBooks.map((v, i) =>
+                {bookFilter.map((v, i) =>
                     <Book
                         key={i}
                         data={v}

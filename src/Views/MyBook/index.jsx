@@ -4,23 +4,15 @@ import Book from "../../Components/Book";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 
-export default function Favorite() {
-    const { favoriteAll, bookFilter } = useContext(AuthContext);
+export default function MyBook() {
+    const { authenticated, getAllBooks } = useContext(AuthContext);
 
-    const filterBook = () => {
-        let arr = [];
-        for (let i in favoriteAll) {
-            arr.push(favoriteAll[i].bookId)
-        }
-        return arr
-    }
-    
     return (
         <Conteiner>
-              <Search/>
+            <Search />
             <AreaBook>
-                {bookFilter.map((v, i) =>
-                   filterBook().includes(v.id) &&
+                {getAllBooks.map((v, i) =>
+                    authenticated.user == v.sentByName &&
                     <Book
                         key={i}
                         data={v}

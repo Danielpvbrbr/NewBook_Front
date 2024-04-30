@@ -35,6 +35,16 @@ export const Info = styled.div`
     }
 `;
 
+export const ButtonAction = styled.span`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 230px;
+
+    svg{
+        font-size: 15pt;
+    }
+`;
 export const BtnDonw = styled.button`
     width: 200px;
     height: 35px;

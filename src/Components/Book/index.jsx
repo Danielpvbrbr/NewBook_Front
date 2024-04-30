@@ -7,14 +7,18 @@ import { useContext } from "react";
 export default function Book(props) {
     const { setRoute } = useContext(AuthContext);
 
+    const onSendData = () => {
+        setRoute({ route: "visualize", data: props.data })
+    };
+
     return (
-        <Container onClick={() => setRoute({ route: "visualize", data: props.data })}>
+        <Container onClick={onSendData}>
             <LogoImg src={props.data.caseUrl} alt="NovoLivro" />
             <AreaInfo>
                 <h1>{props.data.title}</h1>
                 <AreaAction>
                     <Area pos="left">
-                        <BsFillHeartFill color={props.data.islike ? "#ff0000" : "#747474"} />
+                        <BsFillHeartFill color="#747474" />
                         <p>{props.data.like}</p>
                     </Area>
                     <Area pos="right">
